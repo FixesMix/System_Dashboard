@@ -1,0 +1,24 @@
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+<h1>CPU/GPU Monitor</h1>
+<ul id="statsList"></ul>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/monitorHub") 
+        .build();
+
+    connection.on("ReceiveStats", model => {
+        console.log("Received stats:", model);
+
+        const list = document.getElementById("statsList");
+        const item = document.createElement("li");
+        item.textContent = `CPU Usage: ${model.cpuUsage}%, CPU Temp: ${model.cpuTemperature}°C, GPU Usage: ${model.gpuUsage}%, GPU Temp: ${model.gpuTemperature}°C`;
+        list.appendChild(item);
+    });
+
+
+    connection.start()
+        .then(() => console.log("SignalR connected"))
+        .catch(console.error);
+</script>
