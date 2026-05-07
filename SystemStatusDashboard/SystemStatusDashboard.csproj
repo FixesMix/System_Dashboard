@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.3.6" />
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
     <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.5-pre412" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.0-preview.4.25258.110" />
+    <PackageReference Include="Westwind.AspNetCore.LiveReload" Version="0.5.2" />
   </ItemGroup>
 
 </Project>
